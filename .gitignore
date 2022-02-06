@@ -1,0 +1,3 @@
+config_log/*
+config_log.bk
+__pychache__
