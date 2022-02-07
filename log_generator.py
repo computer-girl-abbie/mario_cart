@@ -1,5 +1,5 @@
 def log(display, rating):
-    filename = f"config_log/rating{rating}"
+    filename = f"~/Projects/MarioCart/config_log/rating{rating}"
 
     with open(filename, "a") as file:
         file.write(display)
