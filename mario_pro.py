@@ -37,32 +37,39 @@ def get_random_cup():
     return trophy_names[rand_num]
 
 
+def display_data(data):
+    print("----- Let's Play Mario -----")
+    for item in data:
+        print(f"\t {item['player_name']}")
+        print(f"Controller: {item['controller']}")
+        print(f"Character: {item['character']}")
+        print(f"Cart: {item['cart']}")
+        print(f"Wheels: {item['wheels']}")
+        print(f"Glider: {item['glider']}")
+        print("-" * 30)
+    print(f"Let's ride: {data[0]['cup']} \n")
+
+
 if __name__ == "__main__":
     taken = []
-    display = "------ Let's Play Mario -----\n"
+    data_list = []
+    random_cup = get_random_cup()
+
     for player in players:
-        display += f"""\
-\t{player}
-Controller: {get_controller(taken)}
-Character: {get_character()}
-Cart: {get_cart()}
-Wheels: {get_wheels()}
-Glider: {get_glider()}
-------------------------------
-"""
-    display += f"Let's ride: {get_random_cup()}"
-    print(display)
+        config_data = {}
+        config_data["player_name"] = f"{player}"
+        config_data["controller"] = f"{get_controller(taken)}"
+        config_data["character"] = f"{get_character()}"
+        config_data["cart"] = f"{get_cart()}"
+        config_data["wheels"] = f"{get_wheels()}"
+        config_data["glider"] = f"{get_glider()}"
+        config_data["cup"] = f"{random_cup}"
+        data_list.append(config_data)
+
+    display_data(data_list)
+
     input("Enter any key to continue... ")
-    ratings = []
-    for player in players:
-        rating = input(f"Player {player} config rating (1-5): ")
-        display += f"\nPlayer {player} config rating: {rating}"
-        ratings.append(rating)
-    display += f"\n{str(datetime.datetime.now())}\n"
-    display += "*" * 60
-    display += "\n\n\n" 
-    if ratings[0] == ratings[1]:
-        log(display, rating)
-    else:
-        log(display, ratings[0])
-        log(display, ratings[1])
+
+    for i in range(0, len(players)):
+        data_list[i]['rating'] = input(f"Player {data_list[i]['player_name']} config rating (1-5): ")
+        log(data_list[i])
