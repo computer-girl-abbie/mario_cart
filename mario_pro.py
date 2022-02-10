@@ -13,28 +13,23 @@ def get_controller(number):
 
 
 def get_character():
-    rand_num = round(random.random() * len(characters) - 1)
-    return characters[rand_num]
+    return random.choice(characters)
 
 
 def get_cart():
-    rand_num = round(random.random() * len(carts) - 1)
-    return carts[rand_num]
+    return random.choice(carts)
 
 
 def get_wheels():
-    rand_num = round(random.random() * len(wheels) - 1)
-    return wheels[rand_num]
+    return random.choice(wheels)
 
 
 def get_glider():
-    rand_num = round(random.random() * len(gliders) - 1)
-    return gliders[rand_num]
+    return random.choice(gliders)
 
 # returns a random number between 1 and 12
 def get_random_cup():
-    rand_num = round(random.random() * len(trophy_names) - 1)
-    return trophy_names[rand_num]
+    return random.choice(trophy_names)
 
 
 def display_data(data):
