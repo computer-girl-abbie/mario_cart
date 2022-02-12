@@ -29,7 +29,7 @@ def get_glider():
 
 # returns a random number between 1 and 12
 def get_random_cup():
-    return random.choice(trophy_names)
+    return random.choice(list(trophy_names))
 
 
 def display_data(data):
@@ -65,6 +65,20 @@ if __name__ == "__main__":
 
     input("Enter any key to continue... ")
 
+    # for i in range(0, len(players)):
+    #     print(f"\nEnter ranking for {data_list[i]['player_name']}: ")
+    #     data_list[i]['track_rank'] = {}
+    #     for track in trophy_names[random_cup]:
+    #         data_list[i]['track_rank'][track] = input(f"\t{track}: ")
     for i in range(0, len(players)):
-        data_list[i]['rating'] = input(f"Player {data_list[i]['player_name']} config rating (1-5): ")
+        data_list[i]['track_rank'] = {}
+
+    print("----- Entering Ranks For Tracks -----")
+    for track in trophy_names[random_cup]:
+        for i in range(0, len(players)):
+            data_list[i]['track_rank'][track] = input(f"{data_list[i]['player_name']} -- {track}: ")
+
+
+    for i in range(0, len(players)):
+        data_list[i]['rating'] = input(f"\nPlayer {data_list[i]['player_name']} config rating (1-5): ")
         log(data_list[i])

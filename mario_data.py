@@ -1,19 +1,79 @@
 players = ["Abbie", "Brandon"]
 
-trophy_names = [
-    "Mushroom Cup",
-    "Flower Cup",
-    "Star Cup",
-    "Egg Cup",
-    "Special Cup",
-    "Crossing Cup",
-    "Shell Cup",
-    "Banana Cup",
-    "Leaf Cup",
-    "Lightning Cup",
-    "Triforce Cup",
-    "Bell Cup",
-]
+trophy_names = {
+    "Mushroom Cup": [
+        "Mario Kart Stadium",
+        "Water Park",
+        "Sweet Sweet Canyon",
+        "Thwomp Ruins",
+    ],
+    "Flower Cup": [
+        "Mario Circuit",
+        "Toad Harbor",
+        "Twisted Mansion",
+        "Shy Guy Falls",
+    ],
+    "Star Cup": [
+        "Sunshine Airport",
+        "Dolphin Shores",
+        "Electrodome",
+        "Mount Wario",
+    ],
+    "Egg Cup": [
+        "Yoshi Circuit",
+        "Excitebike Arena",
+        "Dragon Driftway",
+        "Mute City",
+    ],
+    "Special Cup": [
+        "Cloudtop Cruise",
+        "Bone-Dry Dunes",
+        "Bowser's Castle",
+        "Rainbow Road",
+    ],
+    "Crossing Cup": [
+        "Baby Park",
+        "Cheese Land",
+        "Wild Woods",
+        "Animal Crossing",
+    ],
+    "Shell Cup": [
+        "Moo Moo Meadows",
+        "Mario Circuit",
+        "Cheep Cheep Beach",
+        "Toad's Turnpike",
+    ],
+    "Banana Cup": [
+        "Dry Dry Desert",
+        "Donut Plains 3",
+        "Royal Raceway",
+        "DK Jungle",
+    ],
+    "Leaf Cup": [
+        "Wario Stadium",
+        "Sherbert Land",
+        "Music Park",
+        "Yoshi Valley",
+    ],
+    "Lightning Cup": [
+        "Tick-Tock Clock",
+        "Piranha Plant Slide",
+        "Grumble Volcano",
+        "Rainbow Road",
+    ],
+    "Triforce Cup": [
+        "Wario's Gold Mine",
+        "Rainbow Road",
+        "Ice Ice Outpost",
+        "Hyrule Circuit",
+    ],
+    "Bell Cup": [
+        "Neo Bowser City",
+        "Ribbon Road",
+        "Super Bell Subway",
+        "Big Blue",
+    ],
+}
 
 carts = [
     "Circuit Special",
