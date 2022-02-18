@@ -1,5 +1,7 @@
 import random
 import datetime
+from rich.console import Console
+from rich.theme import Theme
 from mario_data import *
 from log_generator import log
 
@@ -33,19 +35,34 @@ def get_random_cup():
 
 
 def display_data(data):
-    print("----- Let's Play Mario -----")
+    console.print("Okie Dokie!", style="header", justify="center")
+    print() # empty line
     for item in data:
-        print(f"\t {item['player_name']}")
-        print(f"Controller: {item['controller']}")
-        print(f"Character: {item['character']}")
-        print(f"Cart: {item['cart']}")
-        print(f"Wheels: {item['wheels']}")
-        print(f"Glider: {item['glider']}")
-        print("-" * 30)
-    print(f"Let's ride: {data[0]['cup']} \n")
+        console.print(f"[u]{item['player_name']}[/u]", style="player", justify="center")
+        console.print(f":joystick: {'Controller:':>15} [v]{item['controller']}[/v]", style="desc", justify="left")
+        console.print(f":bust_in_silhouette: {'Character:':>14} [v]{item['character']}[/v]", style="desc", justify="left")
+        console.print(f":racing_car: {'Cart:':>15} [v]{item['cart']}[/v]", style="desc", justify="left")
+        console.print(f":white_circle: {'Wheels:':>14} [v]{item['wheels']}[/v]", style="desc", justify="left")
+        console.print(f":kite: {'Glider:':>14} [v]{item['glider']}[/v]", style="desc", justify="left")
+        print() # empty line
+    console.print(f":chequered_flag: Let's Ride: {data[0]['cup']} :chequered_flag:", style="header", justify="center")
 
 
 if __name__ == "__main__":
+    custom_theme = Theme({
+        "desc": "bold black on cornsilk1",
+        "val": "bold dark_green on cornsilk1",
+        "header": "bold cornsilk1 on red",
+        "player": "bold cornsilk1 on dark_green",
+        "prompt": "green",
+        "text": "cornsilk1",
+        "u": "underline",
+        "p0": "green",
+        "p1": "blue1",
+        "repr.number": "bold dark_green",
+    })
+    console = Console(width=40, theme=custom_theme)
+
     taken = []
     data_list = []
     random_cup = get_random_cup()
@@ -63,22 +80,20 @@ if __name__ == "__main__":
 
     display_data(data_list)
 
-    input("Enter any key to continue... ")
+    console.input("\n[prompt]Press enter to continue...[/]:hourglass_not_done: ")
 
-    # for i in range(0, len(players)):
-    #     print(f"\nEnter ranking for {data_list[i]['player_name']}: ")
-    #     data_list[i]['track_rank'] = {}
-    #     for track in trophy_names[random_cup]:
-    #         data_list[i]['track_rank'][track] = input(f"\t{track}: ")
     for i in range(0, len(players)):
         data_list[i]['track_rank'] = {}
 
-    print("----- Entering Ranks For Tracks -----")
+    print() # empty line
+    console.print("Entering Ranks For Tracks", style="header", justify="center")
     for track in trophy_names[random_cup]:
         for i in range(0, len(players)):
-            data_list[i]['track_rank'][track] = input(f"{data_list[i]['player_name']} -- {track}: ")
+            data_list[i]['track_rank'][track] = console.input(f"[p{i}]{data_list[i]['player_name']} --[/] [text]{track}:[/] ")
+        console.rule(style="text")
 
-
+    print() # empty line
+    console.print("Entering Player Config Rating", style="header", justify="center")
     for i in range(0, len(players)):
-        data_list[i]['rating'] = input(f"\nPlayer {data_list[i]['player_name']} config rating (1-5): ")
+        data_list[i]['rating'] = console.input(f"[text]Player [p{i}]{data_list[i]['player_name']}[/] config rating (1-5):[/] ")
         log(data_list[i])

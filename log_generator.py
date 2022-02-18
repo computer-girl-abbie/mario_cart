@@ -1,3 +1,4 @@
+import sys
 import json
 from os.path import exists
 
@@ -14,11 +15,15 @@ def log(data):
             json_object = json.dumps(file_content, indent = 2)
             file.write(json_object)
     else:
-        with open(file_name, "w") as file:
-            data_list = []
-            data_list.append(data)
-            json_object = json.dumps(data_list, indent = 2)
-            file.write(json_object)
+        try:
+            with open(file_name, "w") as file:
+                data_list = []
+                data_list.append(data)
+                json_object = json.dumps(data_list, indent = 2)
+                file.write(json_object)
+        except:
+            print('Create directory named config_log to save data.')
+            sys.exit()
 
 if __name__ == "__main__":
     log("sample text", 1)
